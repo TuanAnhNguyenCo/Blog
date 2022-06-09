@@ -1,0 +1,33 @@
+<!-- <div class="card mb-5" style="width: 100%;height: 600px ">
+    <div class="card-body">
+        <h5>Hoạt động gần đây</h5>
+            {% for recent_activity in posts.recent_activites %}   
+            <div style="height: 20%;" >
+                {% if recent_activity.user.userprofile.images %}
+                <img src="{{ recent_activity.user.userprofile.images.url }}" alt="" style="width:40px ; height: 40px; margin-right: 10px;">
+                {% endif%}    
+                {{ recent_activity.user.userprofile.fullname }} 
+                    <br><a href="{% url 'post:question-detail' recent_activity.id %}">Tạo {{recent_activity.title}}</a>     
+            </div>                  
+            {% endfor %}
+
+        </table>
+    </div>
+</div> -->
+<div>
+    <div class="rencent-activity">
+        <h2 class="recent_activity_title">Hoạt động gần đây</h2>
+        <ul class="header-activity">
+            {% for recent_activity in posts.recent_activites %} 
+        <li class="member">
+              {% if recent_activity.user.userprofile.images %}
+              <img src="{{ recent_activity.user.userprofile.images.url }}"  class="image-change">
+              {% endif%}  
+              {{ recent_activity.user.userprofile.fullname }} 
+              <a class="link" href="{% url 'post:question-detail' recent_activity.id %}">Tiêu đề: Tạo {{recent_activity.title}} </a> 
+              <span class="sub">(Hoạt động 4 tiếng trước)</span> 
+        </li>         
+            {% endfor %}
+        </ul>
+      </div>
+</div>

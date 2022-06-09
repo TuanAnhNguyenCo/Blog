@@ -1,0 +1,26 @@
+{% extends 'posts/index.html' %}
+{% block posts%}
+    <div id="AnswerUpdateForm" class="container">
+        <h3 style="text-align: center;" class="mb-5">Chỉnh sửa câu trả lời</h3>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token%}
+            <p>
+                <label for="answerUpdate">Câu trả lời: </label>
+                <textarea name = 'answer' required id="answerUpdate">{{answer.answer}}</textarea>
+            </p>
+            {% if answer.images %}
+            <p>
+                <label for="imgCurrently">Ảnh: </label>
+                <img style="max-height: 100px;max-width: 100px;margin-right: 20px;" src="{{answer.images.url}}" >
+                <label for="ClearImg">Xoá ảnh: </label>
+                <input type="checkbox" name = 'images-clear'>
+            </p>
+            {%endif%}
+            <p>
+                <label for="ChangeIMG">Thay đổi ảnh: </label><br>
+                <input type="file" name = 'images' accept="image/*" id="ChangeIMG">
+            </p>
+            <button type="submit" class="btn btn-primary">Gửi</button>
+        </form>
+    </div>
+{% endblock %}

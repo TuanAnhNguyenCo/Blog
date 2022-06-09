@@ -1,0 +1,28 @@
+{% extends 'posts/index.html' %}
+{% block posts%}
+<div class="create-container">
+    <div id="AnswerUpdateForm" class="create-question">
+        <h3 style="text-align: center;" class="mb-5">Tạo câu hỏi</h3>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token%}
+            <p>
+                <label for="id_powerteam">PowerTeam: </label><br>
+                {{ QuestionCreateForm.powerteam }}
+            </p>
+            <p>
+                <label for="id_title">Tiêu đề: </label><br>
+                {{QuestionCreateForm.title}}
+            </p>
+            <p>
+                <label for="id_description">Mô tả: </label><br>
+                {{QuestionCreateForm.description}}
+            </p>
+            <p>
+                <label for="SelectIMG">Chọn ảnh: </label><br>
+                <input type="file" name = 'images' accept="image/*" id="SelectIMG">
+            </p>
+            <button type="submit" class="btn btn-primary">Gửi</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

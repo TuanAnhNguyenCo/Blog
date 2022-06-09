@@ -1,0 +1,29 @@
+
+#footer{
+    display: flex;
+    padding:30px 200px;
+    background-image: linear-gradient(to right,#40e0d0, #ff8c00, #ff0080);
+    width: 100%;
+    bottom: 0;
+}
+#footer .Contact-Info{
+    padding-left: 300px;
+    padding-right: 200px;
+}
+#footer .footer-img{
+    display: flex;
+}
+#footer .footer-info{
+    margin-top: 4px;
+    margin-left: 10px;
+}
+#footer .link{
+    text-decoration: none;
+}
+#footer .link{
+    opacity: 0.9;
+    color: #4E386E;
+}
+#footer .link:hover{
+    color: red;
+}

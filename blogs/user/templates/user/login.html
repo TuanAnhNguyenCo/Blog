@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-container">
+    <form  class="container" method="post" id="login-form">
+        {%csrf_token%}
+       <h1 class="form-title">Đăng nhập</h1>
+        <table>
+            <tr>
+                <td><input name="email" type="email" required id="email-login" placeholder="Nhập email"></td>
+            </tr>
+            <tr>
+                <td><input name="password" type="password" required id="password-login" placeholder="Nhập mật khẩu"></td>
+            </tr>
+        </table>
+            <button type="submit" class = "btn btn-primary" style="margin-top:20px">Đăng nhập</button>
+    </form>
+</div>
+{% endblock %}

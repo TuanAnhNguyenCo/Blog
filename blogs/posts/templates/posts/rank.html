@@ -1,0 +1,48 @@
+<!-- <div class="card mb-5" style="width: 100%;height:500px;">
+        <div class="card-body">
+            <h5>Bảng xếp hạng</h5>
+            <table style="height: 100%;width: 100%;">
+                {% for idolProfile in posts.idolsProfile %}
+                            <tr style="width: 100%;height: 20%;margin-bottom: 20px;" >
+                                <td >Top {{forloop.counter}} :
+                                    {% if idolProfile.images %}
+                                    <img src="{{ idolProfile.images.url }}" alt="" style="width:40px ; height: 40px; margin-right: 10px;">
+                                    {% endif %}
+                                    {{ idolProfile.fullname }} </td>
+                                <td>Like: {{idolProfile.likes}}</td>
+                            </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+</div>
+ -->
+
+ <div>
+    <table id="table-ranking">
+        <tr class="table">
+            <!-- <td class="icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJZJREFUSEvtldsNgCAMRQ8TOIKO4gg6oa7iBo6gG7iBpiYkQEgwWPiCPyDcR7lpDYWXKYxPVYIRWIDhp6sDmIFdcFwHctH/BLfPN0AEewS3EriFecW7DqoRhB9vibPOYw6ygJzyeoIaQRgU2SdLpJXWFlO/1i2myTh+KdEFdEoZjbZr6d+rwkw4gSk2cJTE+zBVZ3IRBw/wojYZ5nCNwwAAAABJRU5ErkJggg=="/></td> -->
+            <!--colspan="4" Ghép 4 cột làm 1 -->
+            <td colspan="4">
+                <h3 class="ranked">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    Bảng xếp hạng</h3>
+            </td> 
+        </tr>
+            {% for idolProfile in posts.idolsProfile %}
+                            <tr class="ranking-list">
+                                <td class="top">Top{{forloop.counter}}:</td>
+                                <td style="max-width: 50px;"> 
+                                    {% if idolProfile.images %}
+                                    <img class="picture" src="{{ idolProfile.images.url }}" alt="">
+                                    <!-- <div class="user-img">
+                                        <img src="{{idolProfile.images.url}}" >
+                                    </div> -->
+                                    {% endif %}</td> 
+                                <td class="name">{{ idolProfile.fullname }}</td>
+                                <td class="like1">Like: {{idolProfile.likes}} </td>
+                            </tr>
+            {% endfor %}
+        
+    </table>
+ </div>

@@ -1,0 +1,33 @@
+
+<div>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <!-- Boxicons -->
+                <i class='bx bxl-drupal'></i> 
+                <div class="logo_name">Powerteam</div>
+
+            </div>
+        </div>
+        <ul class="nav_list">   
+            <li>
+                <a href="{% url 'post:home' %}">
+                    <i class='bx bx-category'></i>
+                    <span class="links_name">All({{posts.numberOfQuestions}})</span>
+                </a>
+                <!-- <span class="tooltip">Dashboard</span> -->
+            </li>   
+            <br>  
+            {% for powerteam in posts.powerteams %}
+            <li>
+                <a href="{% url 'post:PT-detail' powerteam.id %}">
+                    <!-- <i class='bx bxl-c-plus-plus'></i> -->
+                    <i class='bx bx-heart' ></i>
+                    <span class="links_name">{{powerteam.name}}({{powerteam.questions_set.count}})</span>
+                </a>
+                <!-- <span class="tooltip">Dashboard</span> -->
+            </li>
+            {% endfor%}       
+        </ul>
+    </div>
+</div>

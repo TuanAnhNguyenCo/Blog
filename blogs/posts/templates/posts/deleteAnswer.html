@@ -1,0 +1,13 @@
+{% extends 'posts/index.html' %}
+{% block posts%}
+<div class="card mb-5" style="width: 100%;max-height: 20%;" >
+    <div class="card-body">
+      <form action="" method="post">
+        <h3>Bạn có muốn xoá câu trả lời này không? </h3>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-primary" style="margin-right: 50px;">Có</button>
+        <a href="{{path}}" ><button type="button" class="btn btn-outline-primary">Không</button></a>
+      </form>
+    </div>
+</div>
+{% endblock %}

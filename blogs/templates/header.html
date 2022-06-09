@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Tuấn Anh</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'post:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'post:question-create' %}">Link</a>
+          </li>
+        </ul>
+
+          <div style="height: 100%;font-size: 2rem;cursor: pointer;" class="search-hover"  onclick="showSearchPage()">
+            <span>
+              <i class="fa-brands fa-searchengin"></i>
+            </span>
+          </div>
+  
+        {% if user.is_authenticated %} 
+            <span >Xin chào: {{user.username }}</span>
+            <div class="dropdown">
+              <img src="{{user.userprofile.images.url}}" style="min-width: 40px;max-height: 40px;" />
+              <div class="noidung_dropdown">
+                <a href="#">Thông tin cá nhân</a>
+                <a href="{% url 'user:logout' %}">Đăng xuất</a>
+              </div>
+            </div>
+        {% else %}
+        <span><a href="{% url 'user:login' %}" style="margin-right:10px">Đăng nhập</a></span>
+        <span><a href="{% url 'user:register' %}">Đăng ký</a></span>
+        {% endif %}
+      </div>
+    </div>
+  </nav>

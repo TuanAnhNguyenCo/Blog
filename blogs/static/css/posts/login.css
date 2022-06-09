@@ -1,0 +1,46 @@
+#login-form{
+    background-color: rgba(73,74,85,0.8);
+    color: aliceblue;
+    height: 40vh;
+    width: 30vw;
+    border-radius: 28px;
+    text-align: center;
+    margin-top: 15vh;
+}
+#register-form{
+    background-color: rgba(73,74,85,0.8);
+    color: aliceblue;
+    height: 40vh;
+    width: 30vw;
+    border-radius: 28px;
+    text-align: center;
+    margin-top: 15vh;
+}
+
+.form-container input{
+    border-radius: 15px;
+    width: 100%;
+    border: 1px solid blue;
+    margin: 5px 0;
+    padding: 5px 0;
+    font-size: 1.1rem;
+   
+}
+.form-container table{
+    width: 100%;    
+}
+
+.form-container{
+    display: flex;
+    justify-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right,#40e0d0, #ff8c00, #ff0080);
+}
+.form-title{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+
+
+

@@ -1,0 +1,44 @@
+.recent_activity_title{
+    padding-top: 15px;
+    font-weight: 500;
+    font-size: 2rem;
+    text-align: center;
+}
+.rencent-activity{
+    max-height: 100vh;
+    width: 100%;
+    background: #4E386E;
+    color:#fff !important;
+    margin-top: 50px;
+}
+.rencent-activity .header-activity{
+    list-style-type: none;
+    margin: 0px; 
+    padding: 30px 0px; 
+    font-size: 16px;
+}
+.rencent-activity .member{
+    padding: 5px 0px;
+}
+.image-change {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    }
+.sub{
+   float: right;
+   margin-top: -32px;
+   margin-left: 30px;
+   font-size: 10px;
+   opacity: 0.6;
+   font-style: italic;
+   padding: 0 15px;
+}
+.link{
+    display: block;
+    margin-left: 5px;
+    color: orange;
+}
+.link:hover{
+    color: #fff;
+}

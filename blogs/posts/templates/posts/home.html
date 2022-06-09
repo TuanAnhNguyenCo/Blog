@@ -1,0 +1,69 @@
+{% extends 'posts/index.html' %}
+{% block posts %}
+
+<!-- Tạo câu hỏi -->
+{% if user.is_authenticated %}
+<div style="text-align: right; " class="mb-2"><a href="{% url 'post:question-create' %}?next={{request.get_full_path|urlencode}}"><button type="button" class="btn btn-outline-primary">Tạo câu hỏi</button></a></div>
+{% endif %}
+{% for question in posts.questions %}
+
+<!-- <div class="card mb-5" style="width: 100%;max-height: 50%;">
+            <div class="card-body question-body" > -->
+<div class="question-card mb-5">
+    <div class="question-content">
+        <span class="user-name">
+        {% if question.user.userprofile.images%}
+        <div class="user-img">
+            <img src="{{question.user.userprofile.images.url}}" >
+        </div>
+        {% endif %}
+        @{{question.user}}</span>
+        <h5 class="question-name"><a href="{% url 'post:question-detail' question.id %}">Câu hỏi: {{question.title}}</a></h5>
+        {% if question.answers_set.all%}
+            <p>Người tham gia:</p>
+            {% for ans in question.answers_set.all  %}
+                <!-- <span><img src="{{ans.user.userprofile.images.url}}" alt="" style="height: 30px;width: 30px;border-radius: 15px;"></span> -->
+                <div class="user-img">
+                    <img src="{{ans.user.userprofile.images.url}}" >
+                </div>
+            {% endfor%}
+        {% endif %}
+        <hr>
+        <div>
+            <i class="fa-solid fa-user-group"></i> <span>{{question.answers_set.count}} người tham gia</span>
+            {% if question.user == user %}
+            <div class="edit-button">
+                <a href="{% url 'post:question-delete' question.id %}"><button type="button" class="btn btn-outline-primary">Xoá</button></a>
+                <a href="{% url 'post:question-update' question.id %}?next={{request.get_full_path|urlencode}}"><button type="button" class="btn btn-outline-primary">Chỉnh sửa</button></a>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+            <!-- </div>
+</div> -->
+</div>
+{% endfor%}
+
+
+<h5>Trang:</h5>
+<ul class="pagination">
+    {% if posts.questions.has_previous%}
+    <li class="page-item"><a class="page-link" href="?page={{posts.questions.previous_page_number}}">Previous</a></li>
+    {% endif %}
+    {% for page in posts.page_range %}
+        {% if page == posts.questions.number %}
+        <li class="active page-item"><span class="page-link">{{page}}</span></li>
+        {% elif page == posts.questions.paginator.ELLIPSIS %}
+        <li class="page-item"><span class="page-link" >{{page}}</span></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+        {%endif%}
+    {% endfor %}
+    {% if posts.questions.has_next%}
+    <li class="page-item"><a class="page-link" href="?page={{posts.questions.next_page_number}}">Next</a></li>
+    {% endif %}
+  </ul>
+
+
+{% endblock %}

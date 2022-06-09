@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/profile-menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/search.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/category.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/ranking.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/recent_activity.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/question.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts/createQuestion.css' %}">
+    
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+</head>
+<body>
+    <!-- Header -->
+    <div class="hide-content">
+        {% include "header.html"%}
+    </div>
+    {% include "search.html"%}
+    <!-- Body -->
+    <div class="hide-content">
+        {% block content%}
+        {%endblock%}
+    </div>
+    <div class="hide-content">
+        {% include "footer.html"%}
+    </div>
+    <script src="{% static 'js/post/search.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

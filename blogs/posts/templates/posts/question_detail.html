@@ -1,0 +1,52 @@
+{% extends 'posts/index.html' %}
+{% block posts %}
+    <!-- Hiển  thị câu hỏi -->
+    <div class="card mb-5" style="width: 100%;max-height:50%;">
+        <div class="card-body">
+            <span>
+            {% if posts.question.user.userprofile.images %}
+                <!-- <img src="{{posts.question.user.userprofile.images.url}}" style="width:40px ; height: 40px;"> -->
+                <div class="user-img">
+                    <img src="{{posts.question.user.userprofile.images.url}}" >
+                </div>
+                {% endif %}
+            @{{posts.question.user}}</span>
+            <h5>{{posts.question.title}}</h5>
+            <p>{{posts.question.description}}</p>
+            {% if posts.question.images %}
+            <div class="mt-5"><img style="max-width: 400px;max-height: 400px;" src="{{posts.question.images.url}}" alt=""></div>
+            {%endif%}
+            {% if posts.question.user == user %}
+            <div class="mt-3">
+                <a href="{% url 'post:question-delete' posts.question.id %}"><button type="button" class="btn btn-outline-primary">Xoá</button></a>
+                <a href="{% url 'post:question-update' posts.question.id %}?next={{request.get_full_path|urlencode}}"><button type="button" class="btn btn-outline-primary">Chỉnh sửa</button></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Hiển thị câu trả lời -->
+    {% include 'posts/answers.html'%}
+
+    <!-- Hiển thị phân trang -->
+
+<h5>Trang:</h5>
+<ul class="pagination">
+    {% if posts.answers.has_previous%}
+    <li class="page-item"><a class="page-link" href="?page={{posts.answers.previous_page_number}}">Previous</a></li>
+    {% endif %}
+    {% for page in posts.page_range %}
+        {% if page == posts.answers.number %}
+        <li class="active page-item"><span class="page-link">{{page}}</span></li>
+        <!-- Nếu là dấu ... hay còn gọi là một tập các số trang thì sẽ không dung thẻ a -->
+        {% elif page == posts.answers.paginator.ELLIPSIS %}
+        <li class="page-item"><span class="page-link" >{{page}}</span></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+        {%endif%}
+    {% endfor %}
+    {% if posts.answers.has_next%}
+    <li class="page-item"><a class="page-link" href="?page={{posts.answers.next_page_number}}">Next</a></li>
+    {% endif %}
+  </ul>
+{% endblock %}

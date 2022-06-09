@@ -1,0 +1,16 @@
+<div id="search">
+    <div class="search-content">
+        <div class="search-header">
+           <h3>Tìm Kiếm</h3>
+           <span ><i onclick="showContent()" class="fa-solid fa-circle-xmark"></i></span>
+        </div>
+        <p>Đánh vào từ mà bạn muốn tìm</p>
+        <form method="get" id ='search-form' action="{% url 'post:question-search' %}">
+            {% csrf_token %}
+            <div class="search-input">
+                <span><i class="fa-brands fa-searchengin"></i></span>
+                <input type="text" class="search-input" placeholder="Tìm kiếm" name="q">
+            </div>
+        </form>
+    </div>
+</div>

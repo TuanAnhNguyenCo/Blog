@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content" >
+    {% include "posts/category.html" %}
+    <div class="container">
+        {% block posts %}{% endblock %}
+    </div>
+    <div>
+        {% include "posts/rank.html"%}
+        {% include "posts/recent_activities.html"%}
+    </div>
+</div>
+
+
+{% endblock content %}

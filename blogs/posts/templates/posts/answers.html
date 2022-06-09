@@ -1,0 +1,36 @@
+<!-- Hiển thị danh sách các câu hỏi -->
+
+{% for answer in posts.answers %}
+    <div class="card mb-5" style="width: 100%;max-height:50%;">
+        <div class="card-body">
+            <span>
+            {% if answer.user.userprofile.images%}
+            <img src="{{answer.user.userprofile.images.url}}" style="width:40px ; height: 40px;">
+            {% endif %}
+            @{{answer.user}}</span>
+            
+            <p>{{answer.answer}}</p>
+
+            {% if answer.images %}
+            <div class="mt-5"><img style="max-width: 400px;max-height: 400px;" src="{{answer.images.url}}" alt=""></div>
+            {%endif%}
+
+            {% if answer.user == user %}
+            <div class="mt-3">
+                <a href="{% url 'post:answer-delete' answer.id %}?next={{request.get_full_path|urlencode}}"><button type="button" class="btn btn-outline-primary">Xoá</button></a>
+                <a href="{% url 'post:answer-update' answer.id %}?next={{request.get_full_path|urlencode}}"><button type="button" class="btn btn-outline-primary">Chỉnh sửa</button></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endfor%}
+
+
+<!-- Hiển thị chỗ điền câu trả lời nếu đã đăng nhập -->
+{% if user.is_authenticated %}
+<form action="{% url 'post:answer-create' posts.question.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary">Gửi</button>
+</form>
+{% endif %}
